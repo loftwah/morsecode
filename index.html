@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morse Code Light Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Morse Code Light Simulator</h1>
+    
+    <div class="controls">
+      <textarea id="message" placeholder="Enter message to transmit...">VKNG THIS IS TRNR&#10;MESSAGE FOLLOWS&#10;PROCEED TO GRID BRAVO FOUR&#10;SECURE FROM EXERCISE&#10;WAIT FURTHER TASKING&#10;TRNR OUT</textarea>
+      <div class="buttons">
+        <button id="transmit">Transmit Message</button>
+        <button id="stop">Stop</button>
+        <label for="speed">Speed: </label>
+        <input type="range" id="speed" min="50" max="400" value="200">
+        <span id="speed-value">200ms</span>
+      </div>
+    </div>
+    
+    <div id="morse-preview"></div>
+    
+    <div id="scene">
+      <img src="assets/background.jpg" id="bg" alt="Navy signaler with light">
+      <div id="light"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0a192f;
+  color: white;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background-color: #172a45;
+  color: white;
+  border: 1px solid #64ffda;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #64ffda;
+  color: #0a192f;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #4cceaa;
+}
+
+#morse-preview {
+  background-color: #172a45;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-family: monospace;
+  min-height: 40px;
+  border: 1px solid #64ffda;
+}
+
+#scene {
+  position: relative;
+  width: 1024px;
+  height: 1024px;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#bg {
+  width: 100%;
+  display: block;
+}
+
+#light {
+  position: absolute;
+  top: 240px;
+  left: 100px;
+  width: 350px;
+  height: 360px;
+  border-radius: 50%;
+  background: #333333;
+  transition: background 0.1s, box-shadow 0.1s;
+}
+
+#light.on {
+  background: yellow;
+  box-shadow: 0 0 60px 20px yellow;
+} 

@@ -42,12 +42,48 @@
           <label for="speed">Speed: </label>
           <input type="range" id="speed" min="50" max="400" value="200">
           <span id="speed-value">200ms</span>
+          <span id="wpm-value">(6 WPM)</span>
+        </div>
+        <div class="speed-presets">
+          <button class="preset" data-speed="75">Fast (16 WPM)</button>
+          <button class="preset" data-speed="150">Standard (8 WPM)</button>
+          <button class="preset" data-speed="300">Training (4 WPM)</button>
         </div>
         <button id="toggle-sound">Sound: ON</button>
       </div>
     </div>
     
     <div id="morse-preview"></div>
+    
+    <button id="toggle-reference" class="reference-toggle">Show Morse Code Reference</button>
+    
+    <div id="morse-reference" class="hidden">
+      <h2>Royal Australian Navy Morse Code Reference</h2>
+      <div class="reference-container">
+        <div class="reference-column">
+          <h3>Letters</h3>
+          <div class="reference-grid" id="letters-grid"></div>
+        </div>
+        <div class="reference-column">
+          <h3>Numbers</h3>
+          <div class="reference-grid" id="numbers-grid"></div>
+        </div>
+        <div class="reference-column">
+          <h3>Naval Prosigns</h3>
+          <div class="reference-list" id="prosigns-list">
+            <div class="reference-item"><span class="char">Over (K)</span><span class="code">-·-</span></div>
+            <div class="reference-item"><span class="char">Out (SK)</span><span class="code">···-·-</span></div>
+            <div class="reference-item"><span class="char">Understood (R)</span><span class="code">·-·</span></div>
+            <div class="reference-item"><span class="char">Wait (AS)</span><span class="code">·-···</span></div>
+            <div class="reference-item"><span class="char">Error (HH)</span><span class="code">········</span></div>
+            <div class="reference-item"><span class="char">SOS</span><span class="code">···---···</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reference-footnote">
+        <p>The Royal Australian Navy used International Morse code for ship-to-shore and ship-to-ship communications until its phase-out in the late 1990s, when it was replaced by the Global Maritime Distress and Safety System (GMDSS).</p>
+      </div>
+    </div>
     
     <div id="scene">
       <img src="assets/background.jpg" id="bg" alt="Navy signaler with light">

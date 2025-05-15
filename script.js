@@ -53,6 +53,7 @@ const stopBtn = document.getElementById('stop');
 const speedSlider = document.getElementById('speed');
 const speedValue = document.getElementById('speed-value');
 const morsePreview = document.getElementById('morse-preview');
+const soundToggle = document.getElementById('toggle-sound');
 
 // Default time unit (one dit duration in ms)
 let unitTime = 200;
@@ -159,17 +160,10 @@ transmitBtn.addEventListener('click', () => {
 });
 stopBtn.addEventListener('click', stopTransmission);
 
-// Add toggle sound button to the interface
-document.addEventListener('DOMContentLoaded', () => {
-  const controlsDiv = document.querySelector('.buttons');
-  const soundToggle = document.createElement('button');
-  soundToggle.id = 'toggle-sound';
-  soundToggle.textContent = 'Sound: ON';
-  soundToggle.addEventListener('click', () => {
-    isSoundEnabled = !isSoundEnabled;
-    soundToggle.textContent = isSoundEnabled ? 'Sound: ON' : 'Sound: OFF';
-  });
-  controlsDiv.appendChild(soundToggle);
+// Sound toggle
+soundToggle.addEventListener('click', () => {
+  isSoundEnabled = !isSoundEnabled;
+  soundToggle.textContent = isSoundEnabled ? 'Sound: ON' : 'Sound: OFF';
 });
 
 // Initialize preview

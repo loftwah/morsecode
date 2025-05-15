@@ -7,17 +7,17 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="">
+  <meta property="og:url" content="https://loftwah.github.io/morsecode/">
   <meta property="og:title" content="Morse Code Light Simulator">
   <meta property="og:description" content="A visual Morse code simulator with flashing light and sound">
-  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image" content="https://loftwah.github.io/morsecode/assets/og-image.jpg">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="">
+  <meta name="twitter:url" content="https://loftwah.github.io/morsecode/">
   <meta name="twitter:title" content="Morse Code Light Simulator">
   <meta name="twitter:description" content="A visual Morse code simulator with flashing light and sound">
-  <meta name="twitter:image" content="assets/og-image.jpg">
+  <meta name="twitter:image" content="https://loftwah.github.io/morsecode/assets/og-image.jpg">
   
   <link rel="stylesheet" href="style.css">
 </head>
@@ -27,12 +27,17 @@
     
     <div class="controls">
       <textarea id="message" placeholder="Enter message to transmit...">VKNG THIS IS TRNR&#10;MESSAGE FOLLOWS&#10;PROCEED TO GRID BRAVO FOUR&#10;SECURE FROM EXERCISE&#10;WAIT FURTHER TASKING&#10;TRNR OUT</textarea>
-      <div class="buttons">
-        <button id="transmit">Transmit Message</button>
-        <button id="stop">Stop</button>
-        <label for="speed">Speed: </label>
-        <input type="range" id="speed" min="50" max="400" value="200">
-        <span id="speed-value">200ms</span>
+      <div class="control-panel">
+        <div class="primary-controls">
+          <button id="transmit">Transmit Message</button>
+          <button id="stop">Stop</button>
+        </div>
+        <div class="speed-control">
+          <label for="speed">Speed: </label>
+          <input type="range" id="speed" min="50" max="400" value="200">
+          <span id="speed-value">200ms</span>
+        </div>
+        <button id="toggle-sound">Sound: ON</button>
       </div>
     </div>
     

@@ -10,6 +10,41 @@ const MORSE = {
   '7': '--...', '8': '---..', '9': '----.', ' ': ' '
 };
 
+// Audio context
+let audioContext = null;
+let isSoundEnabled = true;
+
+// Initialize audio context
+function initAudio() {
+  // Create audio context on user interaction to comply with browser policies
+  if (audioContext === null) {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+}
+
+// Play tone with specified duration
+function playTone(duration) {
+  if (!audioContext || !isSoundEnabled) return;
+  
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.type = 'sine';
+  oscillator.frequency.setValueAtTime(800, audioContext.currentTime); // 800Hz is a typical Morse tone
+  
+  // Apply fade in/out to avoid clicks
+  gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+  gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+  gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + duration/1000 - 0.01);
+  gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + duration/1000);
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + duration/1000);
+}
+
 // DOM elements
 const light = document.getElementById('light');
 const messageInput = document.getElementById('message');
@@ -48,6 +83,7 @@ function updateMorsePreview() {
 // Blink the light for a specified duration
 function blink(duration) {
   light.classList.add('on');
+  playTone(duration);
   const timeout = setTimeout(() => {
     light.classList.remove('on');
   }, duration);
@@ -117,10 +153,24 @@ function stopTransmission() {
 messageInput.addEventListener('input', updateMorsePreview);
 transmitBtn.addEventListener('click', () => {
   if (isTransmitting) return;
+  initAudio(); // Initialize audio context on user interaction
   transmitBtn.disabled = true;
   playMorse(messageInput.value);
 });
 stopBtn.addEventListener('click', stopTransmission);
+
+// Add toggle sound button to the interface
+document.addEventListener('DOMContentLoaded', () => {
+  const controlsDiv = document.querySelector('.buttons');
+  const soundToggle = document.createElement('button');
+  soundToggle.id = 'toggle-sound';
+  soundToggle.textContent = 'Sound: ON';
+  soundToggle.addEventListener('click', () => {
+    isSoundEnabled = !isSoundEnabled;
+    soundToggle.textContent = isSoundEnabled ? 'Sound: ON' : 'Sound: OFF';
+  });
+  controlsDiv.appendChild(soundToggle);
+});
 
 // Initialize preview
 updateMorsePreview(); 
